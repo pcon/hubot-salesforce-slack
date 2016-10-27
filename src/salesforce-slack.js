@@ -50,6 +50,11 @@ var CHART_LABEL_MAP = {
     'AvgTransactionSpeed': 'All Instances (in ms)'
 };
 
+/**
+ * Gets JSON data from a given url
+ * @param {string} url - The URL to GET
+ * @returns {object} The JSON data from the URL
+ */
 function getData(url) {
     'use strict';
 
@@ -75,6 +80,11 @@ function getData(url) {
     return deferred.promise;
 }
 
+/**
+ * Gets the information about a given instance
+ * @param {string} instance - The name of the instance to get
+ * @returns {object} Information about the instance
+ */
 function getInstanceInfo(instance) {
     'use strict';
 
@@ -95,14 +105,23 @@ function getInstanceInfo(instance) {
     return deferred.promise;
 }
 
-function getInstanceAlias(instance) {
+/**
+ * Gets alias information about a given instance
+ * @param {string} alias - The alias to get
+ * @returns {object} Information about the alias
+ */
+function getInstanceAlias(alias) {
     'use strict';
 
-    var url = 'https://api.status.salesforce.com/v1/instanceAliases/' + instance;
+    var url = 'https://api.status.salesforce.com/v1/instanceAliases/' + alias;
 
     return getData(url);
 }
 
+/**
+ * Gets the metric data about all the instances
+ * @returns {object} Metric data about all the instances
+ */
 function getMetricValues() {
     'use strict';
 
