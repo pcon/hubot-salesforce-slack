@@ -11,6 +11,7 @@
 //   hubot status <instance> - Gets the status
 //   hubot version <instance> - Gets the version information
 //   hubot alias <name> - Gets the instance name for the given alias
+//   hubot metrics - Gets a metrics graph of all instances
 //
 // Author:
 //   pcon
