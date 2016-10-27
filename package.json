@@ -1,7 +1,7 @@
 {
     "name": "hubot-salesforce-slack",
     "description": "A slack module for hubot to display Salesforce related data",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Patrick Connelly <patrick@deadlypenguin.com>",
     "license": "MIT",
 
