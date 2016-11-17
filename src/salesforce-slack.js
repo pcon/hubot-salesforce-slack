@@ -134,7 +134,7 @@ module.exports = function (robot) {
     'use strict';
 
     robot.respond(/status ([A-Za-z0-9]+)$/i, function (msg) {
-        var attachment, msg_data, stat, incident, impact, maint, m_start, m_end,
+        var attachment, msg_data, stat, incident, impact, maint, m_start, m_end, m_now,
             match = msg.match[1];
 
         getInstanceInfo(match)
@@ -146,13 +146,14 @@ module.exports = function (robot) {
 
                 stat = 'Healthy';
 
-                if (!lo.isEmpty(data.Incidents)) {
+                if (data.status !== 'OK' || !lo.isEmpty(data.Incidents)) {
                     incident = lo.last(data.Incidents);
                     impact = lo.first(incident.IncidentImpacts);
+                    m_now = moment();
                     m_start = moment(impact.startTime);
-                    m_end = (impact.endTime === null) ? moment() : moment(impact.endTime);
+                    m_end = (impact.endTime === null) ? m_now : moment(impact.endTime);
 
-                    if (m_end.isSameOrAfter(moment())) {
+                    if (m_end.isSameOrAfter(m_now)) {
                         if (incident.IncidentImpacts[0].type === 'performanceDegradation') {
                             stat = 'Degradation';
                         } else {
