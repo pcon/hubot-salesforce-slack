@@ -206,7 +206,8 @@ module.exports = function (robot) {
                 };
 
                 robot.adapter.customMessage(msg_data);
-            }).fail(function () {
+            }).fail(function (error) {
+                console.log(error);
                 msg.reply('Unknown instance "' + match + '"');
             });
     });
@@ -235,7 +236,8 @@ module.exports = function (robot) {
                 };
 
                 robot.adapter.customMessage(msg_data);
-            }).fail(function () {
+            }).fail(function (error) {
+                console.log(error);
                 msg.reply('Unknown instance "' + match + '"');
             });
     });
